@@ -101,7 +101,6 @@ hsn_code_validator/
 ├── validator.py       # HSN code validation logic
 ├── requirements.txt   # Project dependencies
 ├── README.md          # Project documentation
-└── troubleshooting_guide.md  # Help for common issues
 ```
 
 ## Extending the Application
