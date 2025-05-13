@@ -25,7 +25,7 @@ A user-friendly web application to validate Harmonized System Nomenclature (HSN)
 1. Clone the repository or download the source code:
 
 ```bash
-git clone https://github.com/yourusername/hsn-code-validator.git
+git clone https://github.com/Navaneeth011/HSN_CODE_VALIDATOR.git
 cd hsn-code-validator
 ```
 
