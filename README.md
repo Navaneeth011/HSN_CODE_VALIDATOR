@@ -2,7 +2,10 @@
 
 A user-friendly web application to validate Harmonized System Nomenclature (HSN) codes against a master dataset. Built with Python and Streamlit.
 
-![HSN Code Validator Screenshot](![alt text]![image](https://github.com/user-attachments/assets/cf46cd28-4590-48ac-9067-9c1aeb8fd0e8)
+![HSN Code Validator Screenshot](![alt text]
+IMAGE 1:
+![image](https://github.com/user-attachments/assets/cf46cd28-4590-48ac-9067-9c1aeb8fd0e8)
+IMAGE 2:
 ![image](https://github.com/user-attachments/assets/5fcc0e11-3693-4fc7-a627-50809a667b6c)
 )
 
