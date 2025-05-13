@@ -115,7 +115,7 @@ The application can be extended in several ways:
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the License process.
 
 ## Acknowledgments
 
