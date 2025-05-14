@@ -1,3 +1,5 @@
-pandas==2.0.3
-streamlit==1.28.0
-openpyxl==3.1.2
+google-adk
+pandas
+streamlit
+openpyxl
+pytest
