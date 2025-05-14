@@ -1,129 +1,139 @@
 # HSN Code Validation Agent
 
-A user-friendly web application to validate Harmonized System Nomenclature (HSN) codes against a master dataset. Built with Python and Streamlit.
+A comprehensive system for validating Harmonized System Nomenclature (HSN) codes against a master dataset using Google's Agent Development Kit (ADK) and Streamlit.
 
-![HSN Code Validator Screenshot](
+HSN Code Validator Screenshot(
+
 IMAGE 1:
-![image](https://github.com/user-attachments/assets/cf46cd28-4590-48ac-9067-9c1aeb8fd0e8)
-IMAGE 2:
-![image](https://github.com/user-attachments/assets/5fcc0e11-3693-4fc7-a627-50809a667b6c)
+(![image](https://github.com/user-attachments/assets/11d8e114-c6f2-4f40-85c6-43ea4c8706b3)
 )
+
+IMAGE 2:
+(![image](https://github.com/user-attachments/assets/ac59f46b-af8f-403b-a524-769f29da2687)
+)
+
+)
+
+## Project Overview
+
+This project implements an intelligent agent that validates HSN codes, which are internationally standardized codes used to classify traded products. The system offers:
+
+1. **Single HSN Code Validation** - Validate individual HSN codes
+2. **Batch Validation** - Process multiple HSN codes at once
+3. **Conversational Interface** - Chat with an AI assistant about HSN codes
 
 ## Features
 
-- **Upload Master Data**: Support for Excel (.xlsx) and CSV (.csv) files containing HSN codes and descriptions
-- **Single Code Validation**: Validate individual HSN codes with detailed results
-- **Bulk Validation**: Process multiple HSN codes at once through text input or file upload
-- **Hierarchical Validation**: Check if parent codes exist in the master data
-- **Export Results**: Download validation results as CSV files
-- **Informative Interface**: Learn about HSN codes and their importance
+- **Format Validation**: Checks if the input code adheres to expected structural characteristics
+- **Existence Validation**: Verifies if the exact HSN code exists in the master dataset
+- **Hierarchical Validation**: Checks if parent codes of a given HSN code exist in the dataset
+- **Detailed Results**: Provides comprehensive validation details for each code
+- **Batch Processing**: Support for validating multiple codes through text input or file upload
+- **Intuitive UI**: User-friendly Streamlit interface with different validation modes
+
+## Technical Architecture
+
+The project uses the Google Agent Development Kit (ADK) to create an intelligent agent with the following components:
+
+1. **HSNDataLoader**: Utility for loading and processing HSN code master data
+2. **HSNValidationTool**: ADK tool that implements the validation logic
+3. **HSNValidator**: Main class that combines the data loader and validation tool into an ADK agent
+4. **Streamlit UI**: Web interface for interacting with the validation system
 
 ## Installation
 
-### Prerequisites
-
-- Python 3.7 or higher
-- pip (Python package installer)
-
-### Setup
-
-1. Clone the repository or download the source code:
-
-```bash
+1. Clone the repository:
+```
 git clone https://github.com/Navaneeth011/HSN_CODE_VALIDATOR.git
-cd hsn-code-validator
+cd HSN_CODE_VALIDATOR
 ```
 
-2. Create and activate a virtual environment (optional but recommended):
-
-```bash
-# On Windows
+2. Create a virtual environment and activate it:
+```
 python -m venv venv
-venv\Scripts\activate
-
-# On macOS/Linux
-python3 -m venv venv
-source venv/bin/activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install the required packages:
-
-```bash
+3. Install the requirements:
+```
 pip install -r requirements.txt
+```
+
+4. Place your HSN master data file in the `data/` directory:
+```
+HSN_CODE_VALIDATOR/data/HSN_SAC - MSTR.csv
 ```
 
 ## Usage
 
-1. Start the application:
+### Running the Application
 
-```bash
+Start the Streamlit web interface:
+
+```
+cd HSN_CODE_VALIDATOR/ui
 streamlit run app.py
 ```
 
-2. Open your web browser and navigate to the URL shown in the terminal (usually http://localhost:8501)
+This will launch the application in your default web browser.
 
-3. Upload your HSN master data file through the sidebar
+### Using the Application
 
-4. Use the different tabs to validate HSN codes:
-   - **Single Validation**: Enter one HSN code and click "Validate"
-   - **Bulk Validation**: Enter multiple codes or upload a file, then click "Validate Codes"
-   - **About HSN Codes**: Learn about the HSN code system
+1. **Single Validation Mode**
+   - Enter a single HSN code in the input field
+   - Click the "Validate" button to see the results
 
-## File Format Requirements
+2. **Batch Validation Mode**
+   - Enter multiple HSN codes separated by commas or upload a CSV/Excel file
+   - Select the appropriate column if uploading a file
+   - Click "Validate Batch" to process all codes at once
 
-The application supports two primary formats for the master data:
-
-1. **Standard Format**: Excel or CSV file with separate columns for HSN codes and descriptions
-   - Column headers should ideally be "HSNCode" and "Description" (case-insensitive)
-   - If column names are different, the application will attempt to identify them based on content
-
-2. **Single Column Format**: A file with HSN codes and descriptions in a single column
-   - HSN codes should be at the beginning of each row (numeric part)
-   - Descriptions should follow the HSN code in the same cell
-
-## Validation Logic
-
-The application validates HSN codes using multiple criteria:
-
-1. **Format Validation**: Checks if the code follows the expected format (digits only)
-2. **Existence Validation**: Verifies if the code exists in the master data
-3. **Hierarchical Validation**: For longer codes, checks if parent codes exist in the master data
-
-## Troubleshooting
-
-If you encounter issues with the application, please refer to the [troubleshooting guide](troubleshooting_guide.md).
-
-Common issues include:
-- File format problems
-- Encoding issues with CSV files
-- HSN code formatting discrepancies
+3. **Chat with Validator Mode**
+   - Interact with the AI assistant conversationally
+   - Ask questions about HSN codes or request validations
 
 ## Project Structure
 
 ```
-hsn_code_validator/
-├── app.py             # Main Streamlit application
-├── validator.py       # HSN code validation logic
-├── requirements.txt   # Project dependencies
-├── README.md          # Project documentation
+HSN_CODE_VALIDATOR/
+├── agent/
+│   ├── __init__.py
+│   ├── hsn_agent.py         # ADK agent implementation
+├── data/
+│   ├── HSN_SAC - MSTR.csv   # HSN master data
+├── ui/
+│   ├── app.py               # Streamlit web interface
+├── utils/
+│   ├── __init__.py
+│   ├── data_loader.py       # Utility for loading HSN data
+├── requirements.txt         # Project dependencies
+├── README.md                # Project documentation
 ```
 
-## Extending the Application
+## ADK Components
 
-The application can be extended in several ways:
+The project leverages several key ADK components:
 
-- Add user authentication
-- Implement caching for better performance with large datasets
-- Create a batch processing system for very large files
-- Add API endpoints for programmatic access
-- Implement more sophisticated validation rules
+1. **LlmAgent**: The base agent class from ADK that provides the agent framework
+2. **BaseTool**: Extended to create our custom HSN validation tool
+3. **build_agent**: Factory function to construct the agent with appropriate configuration
+
+## Extending the Project
+
+To extend the functionality of this project, consider:
+
+1. Adding more validation rules for HSN codes
+2. Implementing a database backend for storing validation results
+3. Adding user authentication for secure access
+4. Incorporating API endpoints for programmatic access
+5. Implementing notification systems for invalid codes
 
 ## License
 
-This project is licensed under the License process.
+This project is under the License process.
 
 ## Acknowledgments
 
-- Harmonized System Nomenclature (HSN) is maintained by the World Customs Organization (WCO)
-- Built with [Streamlit](https://streamlit.io/) - The fastest way to build data apps in Python
-- Uses [Pandas](https://pandas.pydata.org/) for efficient data processing
+- Google Agent Development Kit (ADK) team for providing the framework
+- Streamlit for the interactive web interface capabilities
+- The HSN classification system maintainers for standardizing product codes
